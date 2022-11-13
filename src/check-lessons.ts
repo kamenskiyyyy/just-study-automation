@@ -1,10 +1,20 @@
 import {HOST} from "./config";
 
-const fetch =require( 'node-fetch');
+const https = require('https');
 
 module.exports.handler = async function () {
 
-    await fetch(`${HOST}/api/check-lessons`)
+    await https.request({
+        port: "443",
+        host: HOST,
+        path: "/api/check-lessons",
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        }, (res) => {
+        console.log(res.statusCode);
+    });
 
     return {
         statusCode: 200,
