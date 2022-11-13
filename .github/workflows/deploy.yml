@@ -28,5 +28,3 @@ jobs:
           include: |
             ./src
             package.json
-          exclude: |
-            **/*.ts
