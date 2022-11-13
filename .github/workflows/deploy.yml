@@ -28,3 +28,39 @@ jobs:
           include: |
             ./src
             package.json
+
+      - name: Deploy check-records Function
+        id: sls-func
+        uses: yc-actions/yc-sls-function@v2.3.0
+        with:
+          yc-sa-json-credentials: ${{secrets.YC_SA_JSON_CREDENTIALS}}
+          folder-id: b1g4s4k8tj83buc1hdoq
+          function-name: check-records
+          runtime: nodejs16
+          memory: 128Mb
+          execution-timeout: 60
+          entrypoint: src/check-records.handler
+          service-account: aje38cdteqcfo55pe02h
+          environment: |
+            HOST=${{ secrets.HOST }}
+          include: |
+            ./src
+            package.json
+
+      - name: Deploy check-subscriptions Function
+        id: sls-func
+        uses: yc-actions/yc-sls-function@v2.3.0
+        with:
+          yc-sa-json-credentials: ${{secrets.YC_SA_JSON_CREDENTIALS}}
+          folder-id: b1g4s4k8tj83buc1hdoq
+          function-name: check-subscriptions
+          runtime: nodejs16
+          memory: 128Mb
+          execution-timeout: 60
+          entrypoint: src/check-subscriptions.handler
+          service-account: aje38cdteqcfo55pe02h
+          environment: |
+            HOST=${{ secrets.HOST }}
+          include: |
+            ./src
+            package.json

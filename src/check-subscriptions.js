@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 module.exports.handler = async function () {
 
-    const response = await fetch(`${process.env.HOST}/api/check-lessons`);
+    const response = await fetch(`${process.env.HOST}/api/check-subscriptions`);
 
     if (response.ok) {
         return {
@@ -11,7 +11,7 @@ module.exports.handler = async function () {
                 'Content-Type': 'text/plain'
             },
             isBase64Encoded: false,
-            body: `Уведомления отправлены`
+            body: `Абонементы проверены`
         }
     } else {
         return {
