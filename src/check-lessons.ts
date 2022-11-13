@@ -4,7 +4,7 @@ const https = require('https');
 
 module.exports.handler = async function () {
 
-    await https.request({
+    const req = await https.request({
         port: "443",
         host: HOST,
         path: "/api/check-lessons",
@@ -12,9 +12,19 @@ module.exports.handler = async function () {
         headers: {
             'Content-Type': 'application/json'
         }
-        }, (res) => {
-        console.log(res.statusCode);
-    });
+        })
+
+    req.on('error', () => {
+        return {
+            statusCode: 500,
+            headers: {
+                'Content-Type': 'text/plain'
+            },
+            body: `Уведомления не отправлены`
+        }
+    })
+
+    req.end();
 
     return {
         statusCode: 200,
