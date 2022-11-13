@@ -1,5 +1,6 @@
 import {HOST} from "./config";
-import fetch from 'node-fetch';
+
+const fetch =require( 'node-fetch');
 
 module.exports.handler = async function () {
 
