@@ -21,7 +21,7 @@ jobs:
           runtime: nodejs16
           memory: 128Mb
           execution-timeout: 60
-          entrypoint: dist/check-lessons.handler
+          entrypoint: src/check-lessons.handler
           service-account: aje38cdteqcfo55pe02h
           environment: |
             HOST=${{ secrets.HOST }}
