@@ -34,7 +34,7 @@ jobs:
           environment: |
             HOST=${{ secrets.HOST }}
           include: |
-            ./dist
+            ./src
             package.json
           exclude: |
             **/*.ts
