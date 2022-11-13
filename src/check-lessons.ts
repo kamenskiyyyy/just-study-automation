@@ -1,4 +1,5 @@
 import {HOST} from "./config";
+import fetch from 'node-fetch';
 
 module.exports.handler = async function () {
 
