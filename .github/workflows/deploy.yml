@@ -78,3 +78,20 @@ jobs:
           include: |
             ./src
             package.json
+
+      - name: Deploy sync-currencies Function
+        uses: yc-actions/yc-sls-function@v2.3.0
+        with:
+          yc-sa-json-credentials: ${{secrets.YC_SA_JSON_CREDENTIALS}}
+          folder-id: b1g4s4k8tj83buc1hdoq
+          function-name: sync-currencies
+          runtime: nodejs16
+          memory: 128Mb
+          execution-timeout: 60
+          entrypoint: src/sync-currencies.handler
+          service-account: aje38cdteqcfo55pe02h
+          environment: |
+            HOST=${{ secrets.HOST }}
+          include: |
+            ./src
+            package.json
